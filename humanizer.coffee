@@ -81,6 +81,7 @@ this.Humanizer = (->
       @distanceOfTime(fromTime, new Date(), includeSeconds)
   }
 )()
-
+# alias for distanceOfTime
+this.Humanizer.between = this.Humanizer.distanceOfTime
 this.Humanizer.locale = {}
 

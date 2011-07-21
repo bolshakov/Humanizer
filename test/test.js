@@ -81,4 +81,8 @@
   test("display a few years ago", function() {
     return equal(Humanizer.timeAgo(new Date() - d(2800) - m(5)), "over 7 years");
   });
+  test("between and distanceOfTime are the same functions", function() {
+    return equal(Humanizer.distanceOfTime, Humanizer.between);
+  });
 }).call(this);
+
