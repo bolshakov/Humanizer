@@ -3,10 +3,10 @@ window.Humanizer = (->
     Helper function. Localizes strings.
   ###
   _t = (subject, count)->
-    if Humanizer.locale[Humanizer.currenLocale] is undefined
+    if typeof Humanizer.locale[Humanizer.currenLocale] is "undefined"
       throw Error("Locale \"#{Humanizer.currenLocale}\" not defined.")
 
-    if count is undefined
+    if typeof count is "undefined"
       return Humanizer.locale[Humanizer.currenLocale][subject]
 
     if count == 1
@@ -21,8 +21,8 @@ window.Humanizer = (->
       See test/ directory for examples.
     ###
     distanceOfTime: (fromTime, toTime, includeSeconds)->
-      toTime = toTime.getTime() if toTime.constructor is Date
-      fromTime = fromTime.getTime() if fromTime.constructor is Date
+      toTime = toTime.getTime() if toTime instanceof Date
+      fromTime = fromTime.getTime() if fromTime instanceof Date
 
       distanceInMinutes = Math.floor(Math.abs(toTime - fromTime)/60000)
       distanceInSeconds = Math.floor(Math.abs(toTime - fromTime)/1000)
