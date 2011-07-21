@@ -1,7 +1,7 @@
 ## Overview
 Humanizer library contains functions aimed to convert distance between two dates into it’s representation in words.
 
-### Humanizer.distanceOfTime(fromTime, toTime, includeSeconds)
+### Humanizer.between(from, to, includeSeconds)
 Reports the approximate distance in time between two `Date` objects or integers as microseconds.
 
 Set `includeSeconds` to true if you want more detailed approximations when distance < 1 min, 29 secs.
@@ -73,36 +73,26 @@ With `includeSeconds = true` and the difference < 1 minute 29 seconds:
 
 #### Examples
 ```
-var fromTime = new Date();
-// Helper functions
-s = function(sec) { return sec * 1000  };
-m = function(min) { return min * s(60) };
-h = function(hr)  { return hr * m(60)  };
-d = function(day) { return day * h(24) };
+ # Helper functions
+s = (sec)-> sec * 1000
+m = (min)-> min * s(60)
+from = new Date()
 
-Humanizer.distanceOfTime(fromTime, fromTime - m(65)); // about 1 hour
-Humanizer.distanceOfTime(fromTime, fromTime + s(15)); // less than a minute
-Humanizer.distanceOfTime(fromTime, fromTime + s(15), true); // less than 20 seconds
-Humanizer.distanceOfTime(fromTime, fromTime + h(60));  // about 3 days
-Humanizer.distanceOfTime(fromTime, fromTime + s(45), true); // less than a minute
-Humanizer.distanceOfTime(fromTime, fromTime + s(76)); // 1 minute
-Humanizer.distanceOfTime(fromTime, fromTime + d(368)); // about 1 year
-Humanizer.distanceOfTime(fromTime, fromTime + d(365)*3 + d(180)); // over 3 years
-
-toTime = new Date() + 6*d(365) + d(19);
-Humanizer.distanceOfTime(fromTime, toTime, true); // about 6 years
-Humanizer.distanceOfTime(toTime, fromTime, true); // about 6 years
-Humanizer.distanceOfTime(new Date(), new Date()); // less than a minute
+coffee> Humanizer.between(from, from - m(65))
+"about 1 hour"
+coffee> Humanizer.between(from, from + s(15), true)
+"less than 20 seconds"
 ```
 
-### Humanizer.timeAgo(fromTime, toTime, includeSeconds)
-Like distanceOfTime, but where `toTime` is fixed to new Date().
+### Humanizer.timeAgo(from, to, includeSeconds)
+Like between, but where `to` is fixed to new Date().
 
 #### Examples
 ```
-Humanizer.timeAgo(new Date() + m(3)); // 3 minutes
-Humanizer.timeAgo(new Date() - h(15)); // 15 hours
-Humanizer.timeAgo(new Date()); // less than a minute
+coffee> Humanizer.timeAgo(new Date() + m(3))
+"3 minutes"
+coffee> Humanizer.timeAgo(new Date())
+"less than a minute"
 ```
 
 ## Usage
