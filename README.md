@@ -107,9 +107,9 @@ Humanizer.timeAgo(new Date()); // less than a minute
 
 ## Usage
 Add humanize.js into your html file and then include locales needed:
-    <script src="javascripts/humanizer.js"></script>
-    <script src="javascripts/locale/humanizer.locale.cz.js"></script>
-    <script src="javascripts/locale/humanizer.locale.en.js"></script>
+    &lt;script src="javascripts/humanizer.js"&gt;&lt;/script&gt;
+    &lt;script src="javascripts/locale/humanizer.locale.cz.js"&gt;&lt;/script&gt;
+    &lt;script src="javascripts/locale/humanizer.locale.en.js&gt;&lt;/script&gt;
 
 ## Building library
 Locales can be generated using Cakefile:
