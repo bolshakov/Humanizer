@@ -107,15 +107,16 @@ Humanizer.timeAgo(new Date()); // less than a minute
 
 ## Usage
 Add humanize.js into your html file and then include locales needed:
-    &lt;script src="javascripts/humanizer.js"&gt;&lt;/script&gt;
-    &lt;script src="javascripts/locale/humanizer.locale.cz.js"&gt;&lt;/script&gt;
-    &lt;script src="javascripts/locale/humanizer.locale.en.js&gt;&lt;/script&gt;
-
+```
+&lt;script src="javascripts/humanizer.js"&gt;&lt;/script&gt;
+&lt;script src="javascripts/locale/humanizer.locale.cz.js"&gt;&lt;/script&gt;
+&lt;script src="javascripts/locale/humanizer.locale.en.js&gt;&lt;/script&gt;
+```
 ## Building library
 Locales can be generated using Cakefile:
-    $ cake fetch # Grap locale files from Padrino source
+```$ cake fetch # Grap locale files from Padrino source```
 To compile humanizer into JavaScript execute command:
-    $ cake compile
+```$ cake compile```
 
 To use Cake file you need node.js and coffee-script npm package installed.
 
