@@ -12,7 +12,7 @@ option "-o", "--output [DIR]", "directory for compiled code"
 task "compile", "compile humanizer library", (options)->
   compilePath = options.output or compileDir
   source = fs.readFileSync "humanizer.coffee", "utf-8"
-  js = cs.compile source
+  js = cs.compile source, {bare: true}
   sys.puts "Compiling humanizer.coffee..."
   fs.writeFile path.join(".", compilePath, "humanizer.js"), js, (error)->
     if error
