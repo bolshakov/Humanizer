@@ -1,4 +1,4 @@
-window.Humanizer = (->
+this.Humanizer = (->
   ###
     Helper function. Localizes strings.
   ###
@@ -82,5 +82,5 @@ window.Humanizer = (->
   }
 )()
 
-window.Humanizer.locale = {}
+this.Humanizer.locale = {}
 

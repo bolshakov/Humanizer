@@ -58,7 +58,7 @@ task "fetch", "fetch translations from Padrino source", (options)->
                   locale[camalizedKey] = rawLocale[key]
                   locale
                 ), {}
-                localeSource = "window.Humanizer.locale.#{localeName} =\n" + JSON.stringify(localeSource) + "\nwindow.Humanizer.currenLocale = \"#{localeName}\""
+                localeSource = "this.Humanizer.locale.#{localeName} =\n" + JSON.stringify(localeSource) + "\nthis.Humanizer.currenLocale = \"#{localeName}\""
                 filename = "humanizer.locale.#{localeName}.js"
                 fs.writeFile path.join(".", compilePath, "locale", filename), localeSource, (error)->
                   # Skip amd try to fetch other locales
