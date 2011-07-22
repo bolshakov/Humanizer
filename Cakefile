@@ -1,83 +1,98 @@
-fs = require "fs"
-sys = require "sys"
+fs    = require "fs"
+sys   = require "sys"
 https = require "https"
-cs = require "coffee-script"
-path = require "path"
+cs    = require "coffee-script"
+path  = require "path"
 
-padrinoRepoPath = "padrino/padrino-framework"
-compileDir = "lib"
+padrino = "padrino/padrino-framework"
 
-option "-o", "--output [DIR]", "directory for compiled code"
+# Helpers
+# -------
 
-task "compile", "compile humanizer library", (options)->
-  compilePath = options.output or compileDir
-  source = fs.readFileSync "humanizer.coffee", "utf-8"
-  js = cs.compile source
-  sys.puts "Compiling humanizer.coffee..."
-  fs.writeFile path.join(".", compilePath, "humanizer.js"), js, (error)->
-    if error
-      sys.puts "Fail to save file humanizer.js."
-      sys.puts error
+fetch = (options, callback) ->
+  https.get options, (response)->
+    chunks = []
+
+    response.setEncoding "utf-8"
+    response.on "data", (chunk) -> chunks.push chunk
+    response.on "end", -> callback chunks.join ""
 
 
-task "fetch", "fetch translations from Padrino source", (options)->
-  compilePath = options.output or compileDir
+exec = (command) ->
+  require("child_process").exec command, (err, stdout, stderr) ->
+    throw err if err
+    console.log stdout + stderr
+
+
+# Tasks
+# -----
+
+task "build", "build everything (library + translations)", ->
+  invoke "build:library"
+  invoke "build:translations"
+
+
+task "build:library", "build project from src/*.coffee to lib/*.js", ->
+  sys.puts "Building humanize.coffee ..."
+  exec "coffee -o lib -c src/*.coffee"
+
+
+task "build:translations", "build translations from Padrino source", ->
   options =
     host: "github.com"
-    path: "/api/v2/json/blob/all/#{padrinoRepoPath}/master"
+    path: "/api/v2/json/blob/all/#{padrino}/master"
 
-  # Fetch locales list
-  https.get options, (response)->
-    response.setEncoding('utf8')
-    body = ""
-    response.on "data", (chunk)-> body += chunk
-    response.on "end", ->
-      # Hash of all repo files
-      files = JSON.parse(body).blobs
-      # Filter locale files
-      for file, hash of files
-        if file.indexOf("helpers/locale") isnt -1
-          options =
-            host: "raw.github.com"
-            path: "/#{padrinoRepoPath}/master/#{file}"
-          # Fetch locale files
-          https.get options, (response)->
-            webPath = response.socket.pair.cleartext._httpMessage.path
-            localeName = webPath[webPath.indexOf("helpers/locale") + 15...-4]
-            sys.puts "Fetching \"#{localeName}\" locale..."
-            yaml = ""
-            response.on "data", (chunk)-> yaml += chunk
-            response.on "end", ->
-              try
-                jsString = cs.compile yaml, {bare: true}
-                # Locale from padrino source
-                rawLocale = (eval(jsString))[localeName]["datetime"]["distance_in_words"]
-                # Camalize keys
-                localeSource = Object.keys(rawLocale).reduce ((locale, key) ->
-                  camalizedKey = key.replace /(_\w)/g, (m)-> m.charAt(1).toUpperCase()
-                  locale[camalizedKey] = rawLocale[key]
-                  locale
-                ), {}
-                localeSource = """(function() {
-                  var root = this;
+  fetch options, (response)->
+    Object.keys(JSON.parse(response).blobs).forEach (file) ->
+      # Skip any non-locale files.
+      return if file.indexOf("helpers/locale") is -1
 
-                  if (typeof exports !== "undefined" && exports !== null) {
-                      Humanizer = exports;
-                  } else {
-                      Humanizer = root.Humanizer = {};
-                  }
+      [rest..., locale] = file.split "/"
+      locale = path.basename locale, ".yml"
 
-                  Humanizer.locales = Humanizer.locales || {};
-                  Humanizer.locales.#{localeName} = #{JSON.stringify(localeSource)};
-                  Humanizer.currentLocale = "#{localeName}";
-                })()"""
-                filename = "humanizer.locale.#{localeName}.js"
-                fs.writeFile path.join(".", compilePath, "locale", filename), localeSource, (error)->
-                  # Skip amd try to fetch other locales
-                  if error
-                    sys.puts "Fail to save locale #{localeName}."
-                    sys.puts error
-              catch error
-                sys.puts "Faild to parse locale #{localeName}"
-                sys.puts "    ^ #{error}"
+      # Okay, seems like we have a locale file, time to fetch it.
+      options =
+        host: "raw.github.com"
+        path: "/#{padrino}/master/#{file}"
 
+      fetch options, (yaml)->
+        sys.puts "Processing '#{locale}' ..."
+
+        try
+          js = cs.compile yaml, bare: true
+        catch error
+          sys.puts "Failed to parse locale #{locale}:"
+          sys.puts "    ^ #{error}"
+          return
+
+        # Hardcore compile action!
+        # a) extracting `distance_in_words` from compiled Padrino locale.
+        localeObj = eval(js)[locale].datetime["distance_in_words"]
+
+        # b) converting locale keys from under_Score to CamelCase.
+        toCamelCase = (str) ->
+          str.replace /(_\w)/g, (m)-> m.charAt(1).toUpperCase()
+
+        localeObj = Object.keys(localeObj).reduce ((locale, key) ->
+          locale[toCamelCase key] = localeObj[key]
+          locale
+        ), {}
+
+        # c) wrapping resulting `localeObj` in some boilerplate code,
+        #    so we can load on demand later.
+        localeSource = cs.compile """
+          Humanizer = if exports? then exports else @Humanizer ||= {}
+          Humanizer.locales ||= {}
+          Humanizer.locales.#{locale} = #{JSON.stringify localeObj}
+          Humanizer.currentLocale = '#{locale}'
+          return Humanizer
+        """
+
+        # d) and finally writing the thing to `lib/locale`.
+        root     = path.join ".", "lib", "locales"
+        filename = path.join root, "humanizer.#{locale}.js"
+
+        path.exists root, (exists) ->
+          fs.mkdirSync root, 0755 unless exists
+          fs.writeFile filename, localeSource, (err) ->
+            throw err if err
