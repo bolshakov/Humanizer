@@ -60,9 +60,16 @@ task "fetch", "fetch translations from Padrino source", (options)->
                 ), {}
                 localeSource = """(function() {
                   var root = this;
-                  root.Humanizer.locales.#{localeName} =
-                  #{JSON.stringify(localeSource)}
-                  root.Humanizer.currentLocale = "#{localeName}"
+
+                  if (typeof exports !== "undefined" && exports !== null) {
+                      Humanizer = exports;
+                  } else {
+                      Humanizer = root.Humanizer = {};
+                  }
+
+                  Humanizer.locales = Humanizer.locales || {};
+                  Humanizer.locales.#{localeName} = #{JSON.stringify(localeSource)};
+                  Humanizer.currentLocale = "#{localeName}";
                 })()"""
                 filename = "humanizer.locale.#{localeName}.js"
                 fs.writeFile path.join(".", compilePath, "locale", filename), localeSource, (error)->

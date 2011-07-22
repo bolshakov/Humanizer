@@ -1,10 +1,15 @@
-assert = require "assert"
-humanizer = require "../humanizer"
+assert    = require "assert"
+humanizer = require "./lib/humanizer"
+
+# Load `en` locale -- hack, until we come up with a proper way of
+# loading locales.
+for key, value of require "./lib/locale/humanizer.locale.en"
+  humanizer[key] = value
 
 # Helper time functions
 s = (sec) -> sec * 1000
 m = (min) -> min * s(60)
-h = (hr)  -> hr * m(60)
+h = (hr)  -> hr  * m(60)
 d = (day) -> day * h(24)
 
 test = (name, f) ->
@@ -35,16 +40,16 @@ test "display yesterday", ->
   assert.eql humanizer.since(Date.now() - d(1)), "1 day"
 
 test "display tomorrow", ->
-  assert.eql humanizer.since(new Date(Date.now().getTime() + d(1))), "1 day"
+  assert.eql humanizer.since(new Date(Date.now() + d(1))), "1 day"
 
 test "return future number of days", ->
-  assert.eql humanizer.since(new Date(Date.now().getTime() + d(4))), "4 days"
+  assert.eql humanizer.since(new Date(Date.now() + d(4))), "4 days"
 
 test "return past days ago", ->
-  assert.eql humanizer.since(new Date(Date.now().getTime() + d(4))), "4 days"
+  assert.eql humanizer.since(new Date(Date.now() + d(4))), "4 days"
 
 test "return formatted archived date", ->
-  assert.eql humanizer.since(new Date(Date.now().getTime() + d(100))), "3 months"
+  assert.eql humanizer.since(new Date(Date.now() + d(100))), "3 months"
 
 test "return formatted archived year date", ->
   assert.eql humanizer.since(Date.now() - d(500)), "over 1 year"
@@ -80,5 +85,4 @@ test "display a few years ago", ->
   assert.eql humanizer.since(Date.now() - d(2800) - m(5)), "over 7 years"
 
 test "between and distanceOfTime are the same functions", ->
-  assert.eql humanizer.distanceOfTime, Humanizer.between
-
+  assert.eql humanizer.distanceOfTime, humanizer.between
