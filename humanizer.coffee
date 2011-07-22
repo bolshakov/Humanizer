@@ -1,4 +1,7 @@
-this.Humanizer = (->
+# Establish the root object,
+root = this
+
+root.Humanizer = (->
   ###
     Helper function. Localizes strings.
   ###
@@ -82,6 +85,6 @@ this.Humanizer = (->
   }
 )()
 # alias for distanceOfTime
-this.Humanizer.between = this.Humanizer.distanceOfTime
-this.Humanizer.locale = {}
+root.Humanizer.between = root.Humanizer.distanceOfTime
+root.Humanizer.locale = {}
 

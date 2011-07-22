@@ -12,7 +12,7 @@ option "-o", "--output [DIR]", "directory for compiled code"
 task "compile", "compile humanizer library", (options)->
   compilePath = options.output or compileDir
   source = fs.readFileSync "humanizer.coffee", "utf-8"
-  js = cs.compile source, {bare: true}
+  js = cs.compile source
   sys.puts "Compiling humanizer.coffee..."
   fs.writeFile path.join(".", compilePath, "humanizer.js"), js, (error)->
     if error
@@ -58,7 +58,12 @@ task "fetch", "fetch translations from Padrino source", (options)->
                   locale[camalizedKey] = rawLocale[key]
                   locale
                 ), {}
-                localeSource = "this.Humanizer.locale.#{localeName} =\n" + JSON.stringify(localeSource) + "\nthis.Humanizer.currenLocale = \"#{localeName}\""
+                localeSource = """(function() {
+                  var root = this;
+                  root.Humanizer.locale.#{localeName} =
+                  #{JSON.stringify(localeSource)}
+                  root.Humanizer.currenLocale = "#{localeName}"
+                })()"""
                 filename = "humanizer.locale.#{localeName}.js"
                 fs.writeFile path.join(".", compilePath, "locale", filename), localeSource, (error)->
                   # Skip amd try to fetch other locales
