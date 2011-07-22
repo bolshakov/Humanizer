@@ -31,11 +31,11 @@ coffee> Humanizer.between(to, from, true)
 coffee> Humanizer.between(new Date(), new Date())
 "less than a minute"
 
-coffee> Humanizer.timeAgo(new Date() + m(3))
+coffee> Humanizer.since(new Date() + m(3))
 "3 minutes"
-coffee> Humanizer.timeAgo(new Date() - h(15))
+coffee> Humanizer.since(new Date() - h(15))
 "15 hours"
-coffee> Humanizer.timeAgo(new Date())
+coffee> Humanizer.since(new Date())
 "less than a minute"
 ```
 

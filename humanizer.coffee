@@ -84,7 +84,9 @@ root.Humanizer = (->
       @distanceOfTime(fromTime, new Date(), includeSeconds)
   }
 )()
-# alias for distanceOfTime
+# aliases
 root.Humanizer.between = root.Humanizer.distanceOfTime
+root.Humanizer.since = root.Humanizer.timeAgo
+
 root.Humanizer.locale = {}
 

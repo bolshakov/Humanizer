@@ -84,14 +84,14 @@ coffee> Humanizer.between(from, from + s(15), true)
 "less than 20 seconds"
 ```
 
-### Humanizer.timeAgo(from, to, includeSeconds)
+### Humanizer.since(from, to, includeSeconds)
 Like between, but where `to` is fixed to new Date().
 
 #### Examples
 ```
-coffee> Humanizer.timeAgo(new Date() + m(3))
+coffee> Humanizer.since(new Date() + m(3))
 "3 minutes"
-coffee> Humanizer.timeAgo(new Date())
+coffee> Humanizer.since(new Date())
 "less than a minute"
 ```
 
