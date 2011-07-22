@@ -113,7 +113,7 @@ Humanizer.timeAgo = (fromTime, includeSeconds)->
 
 # Some nice aliases.
 Humanizer.between = Humanizer.distanceOfTime
-Humanizer.since = Humanizer.Humanizer.timeAgo
+Humanizer.since = Humanizer.timeAgo
 
 Humanizer.locales = {}
 
