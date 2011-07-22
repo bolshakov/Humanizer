@@ -17,7 +17,7 @@ Humanizer.locales = {}
 
 
 # Runs `Humanizer` in *noConflict* mode, returning the `Humanizer`
-# variable to its previous owner. Returns a reference to this BERT
+# variable to its previous owner. Returns a reference to this Humanizer
 # object -- thanks to Backbone.js.
 Humanizer.noConflict = ->
   root.Humanizer = previousHumanizer
