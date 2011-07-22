@@ -3,7 +3,7 @@ humanizer = require "./lib/humanizer"
 
 # Load `en` locale -- hack, until we come up with a proper way of
 # loading locales.
-for key, value of require "./lib/locale/humanizer.locale.en"
+for key, value of require "./lib/locales/humanizer.en"
   humanizer[key] = value
 
 # Helper time functions
