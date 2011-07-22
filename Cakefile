@@ -4,8 +4,7 @@ https = require "https"
 cs    = require "coffee-script"
 path  = require "path"
 
-padrinoRepoPath = "padrino/padrino-framework"
-compileDir = "lib"
+padrino = "padrino/padrino-framework"
 
 # Helpers
 # -------
@@ -41,7 +40,7 @@ task "build:library", "build project from src/*.coffee to lib/*.js", ->
 task "build:translations", "build translations from Padrino source", ->
   options =
     host: "github.com"
-    path: "/api/v2/json/blob/all/#{padrinoRepoPath}/master"
+    path: "/api/v2/json/blob/all/#{padrino}/master"
 
   fetch options, (response)->
     Object.keys(JSON.parse(response).blobs).forEach (file) ->
@@ -54,7 +53,7 @@ task "build:translations", "build translations from Padrino source", ->
       # Okay, seems like we have a locale file, time to fetch it.
       options =
         host: "raw.github.com"
-        path: "/#{padrinoRepoPath}/master/#{file}"
+        path: "/#{padrino}/master/#{file}"
 
       fetch options, (yaml)->
         sys.puts "Processing '#{locale}' ..."
