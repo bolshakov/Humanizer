@@ -60,9 +60,9 @@ task "fetch", "fetch translations from Padrino source", (options)->
                 ), {}
                 localeSource = """(function() {
                   var root = this;
-                  root.Humanizer.locale.#{localeName} =
+                  root.Humanizer.locales.#{localeName} =
                   #{JSON.stringify(localeSource)}
-                  root.Humanizer.currenLocale = "#{localeName}"
+                  root.Humanizer.currentLocale = "#{localeName}"
                 })()"""
                 filename = "humanizer.locale.#{localeName}.js"
                 fs.writeFile path.join(".", compilePath, "locale", filename), localeSource, (error)->
