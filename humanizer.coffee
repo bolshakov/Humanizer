@@ -11,6 +11,11 @@ else
   Humanizer = root.Humanizer = {}
 
 
+# Locale registry, available locales can be found in `locales/`
+# directory.
+Humanizer.locales = {}
+
+
 # Runs `Humanizer` in *noConflict* mode, returning the `Humanizer`
 # variable to its previous owner. Returns a reference to this BERT
 # object -- thanks to Backbone.js.
@@ -50,8 +55,8 @@ Humanizer.distanceOfTime = (fromTime, toTime, includeSeconds)->
   toTime = toTime.getTime() if toTime instanceof Date
   fromTime = fromTime.getTime() if fromTime instanceof Date
 
-  distanceInMinutes = Math.floor(Math.abs(toTime - fromTime)/60000)
-  distanceInSeconds = Math.floor(Math.abs(toTime - fromTime)/1000)
+  distanceInMinutes = Math.floor(Math.abs(toTime - fromTime) / 60000)
+  distanceInSeconds = Math.floor(Math.abs(toTime - fromTime) / 1000)
 
   if 0 <= distanceInMinutes <= 1
     if distanceInMinutes is 0 and includeSeconds isnt on
@@ -109,5 +114,3 @@ Humanizer.timeAgo = (fromTime, includeSeconds)->
 
 # Some nice aliases.
 Humanizer.between = Humanizer.distanceOfTime
-Humanizer.locales = {}
-
