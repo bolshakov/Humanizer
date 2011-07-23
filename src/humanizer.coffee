@@ -115,5 +115,3 @@ Humanizer.timeAgo = (fromTime, includeSeconds)->
 Humanizer.between = Humanizer.distanceOfTime
 Humanizer.since = Humanizer.timeAgo
 
-Humanizer.locales = {}
-
