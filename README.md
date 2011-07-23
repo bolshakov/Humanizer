@@ -53,7 +53,7 @@ locales you need:
     <head>
       <script src="lib/humanizer.js"></script>
       <script>
-       var bicycleDay = Date.parse("November 16, 1938");
+        var bicycleDay = Date.parse("November 16, 1938");
         window.onload = function() {
           Humanizer.locale("en", {path: "lib/locales"}).addEventListener("load", function() {
             Humanizer.since(bicycleDay);
