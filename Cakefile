@@ -27,6 +27,9 @@ exec = (command) ->
 # Tasks
 # -----
 
+task "test", "run tests form test/*.coffee", ->
+  exec "expresso -I lib test/*.coffee"
+
 task "build", "build everything (library + translations)", ->
   invoke "build:library"
   invoke "build:translations"

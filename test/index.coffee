@@ -1,5 +1,5 @@
 assert    = require "assert"
-humanizer = require "../lib/humanizer"
+humanizer = require "humanizer"
 
 # Load `en` locale -- hack, until we come up with a proper way of
 # loading locales.
