@@ -1,12 +1,13 @@
-## Overview
-Humanizer library contains functions aimed to convert distance between two dates into it’s representation in words.
+Humanizer
+=========
 
-### Humanizer.between(from, to, includeSeconds)
-Reports the approximate distance in time between two `Date` objects or integers as microseconds.
+`Humanizer` is a library, which knows how to measure approximate distance
+between the to given dates. For example, the difference between `now` and
+`now - 25 seconds ago` is `less than a minute` -- obvious, right?
 
-Set `includeSeconds` to true if you want more detailed approximations when distance < 1 min, 29 secs.
+Actually, there's no magic, here's a list of intervals with the
+corresponding outputs:
 
-Distances are reported based on the following table:
 <table>
   <tr>
     <td>0 <-> 29 secs</td><td>less than a minute</td>
@@ -49,7 +50,9 @@ Distances are reported based on the following table:
   </tr>
 </table>
 
-With `includeSeconds = true` and the difference < 1 minute 29 seconds:
+There's also a special *more precise* table for intervals under one
+and a half minutes:
+
 <table>
   <tr>
     <td>0-4 secs</td><td>less than 5 seconds</td>
@@ -71,13 +74,28 @@ With `includeSeconds = true` and the difference < 1 minute 29 seconds:
   </tr>
 </table>
 
-#### Examples
-```
- # Helper functions
-s = (sec)-> sec * 1000
-m = (min)-> min * s(60)
-from = new Date()
 
+Examples
+--------
+
+First, we'll need a bunch of helpers -- `m()` for minutes and `s()`
+for seconds:
+
+```coffeescript
+s = (sec) -> sec * 1000
+m = (min) -> min * s(60)
+```
+
+### Humanizer.between(from, to, includeSeconds)
+
+Returns the approximate distance in time between two given objects,
+which can either be `Date` or `Number` instances. When `includeSeconds`
+is `true`, `Humanizer` calculates a more precise approximation, for
+intervals under one and a half minutes.
+
+```coffeescript
+coffee> from = new Date()
+Sat, 23 Jul 2011 00:52:59 GMT
 coffee> Humanizer.between(from, from - m(65))
 "about 1 hour"
 coffee> Humanizer.between(from, from + s(15), true)
@@ -85,34 +103,41 @@ coffee> Humanizer.between(from, from + s(15), true)
 ```
 
 ### Humanizer.since(from, to, includeSeconds)
-Like between, but where `to` is fixed to new Date().
 
-#### Examples
-```
+Just like `#between()`, but the second argument is fixed to `new Date()`.
+
+```coffeescript
 coffee> Humanizer.since(new Date() + m(3))
 "3 minutes"
 coffee> Humanizer.since(new Date())
 "less than a minute"
 ```
 
-## Usage
-Add humanize.js into your html file and then include locales needed:
+Usage
+-----
+
+Add `humanize.js` to your `<head />` and don't forget to include the
+locales you need:
 
     <script src="javascripts/humanizer.js"></script>
-    <script src="javascripts/locale/humanizer.locale.cz.js"></script>
     <script src="javascripts/locale/humanizer.locale.en.js"></script>
+    <script src="javascripts/locale/humanizer.locale.cz.js"></script>
 
-## Building library
-Locales can be generated using Cakefile:
 
-    $ cake fetch # Grap locale files from Padrino source
+Building the library
+--------------------
 
-To compile humanizer into JavaScript execute command:
+Easy as pie! erm `cake`:
 
-    $ cake compile
+    $ cake build
 
-To use Cake file you need node.js and coffee-script npm package installed.
+This will compile `humanizer.coffee` and also fetch all available locales
+from Padrino, translating them into a format `Humanizer` can understand.
 
-## Copyright
-Source code was extracted from Padrino project and converted into CoffeeScript. See LICENSE for details.
+
+Copyright
+---------
+
+Source code was extracted from Padrino project and translated into
+CoffeeScript. See LICENSE file for details.
 
