@@ -11,7 +11,7 @@ else
   Humanizer = root.Humanizer = {}
 
   # Load locale file on-demand
-  Humanizer.locale = (locale, options)->
+  Humanizer.locale = (locale, options = "./locales")->
     path = options.path or options
     # a) grab `<head />` tag
     head = (document.getElementsByTagName "head")[0]
