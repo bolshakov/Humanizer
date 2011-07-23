@@ -52,17 +52,14 @@ locales you need:
 
     <head>
       <script src="lib/humanizer.js"></script>
+      <script src="lib/locales/humanizer.fr.js"></script>
+      <script src="lib/locales/humanizer.en.js"></script>
       <script>
         var bicycleDay = Date.parse("November 16, 1938");
-        window.onload = function() {
-          Humanizer.locale("en", {path: "lib/locales"}).addEventListener("load", function() {
-            Humanizer.since(bicycleDay);
-          }, false);
-        }
+        Humanizer.locale("fr").since(bicycleDay);
       </script>
     </head>
 
-Note: before using the library you need to ensure that a locale has been loaded.
 
 Building the library
 --------------------

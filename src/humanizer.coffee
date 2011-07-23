@@ -8,26 +8,32 @@ previousHumanizer = root.Humanizer
 if exports?
   Humanizer = exports
 
-  Humanizer.locale = (locale, options = "./locales")->
-    path = options.path or options
-    for key, value of require "#{path}/humanizer.#{locale}"
-      Humanizer[key] = value
+  # Switch current locale. Lazy load it, if not avaliable.
+  Humanizer.locale = (locale)->
+    if @locales[locale]
+      @currentLocale = locale
+    else
+      file = "#{ __dirname}/locales/humanizer.#{locale}.js"
+      # If locale file exists.
+      if require("fs").statSync(file).isFile()
+        for key, value of require file
+          @[key] = value
+      else
+        throw Error("Locale '#{locale}' is not available.")
+
+    @currentLocale = locale
+    return @
 
 else
   Humanizer = root.Humanizer = {}
 
-  # Load locale file on-demand
-  Humanizer.locale = (locale, options = "./locales")->
-    path = options.path or options
-    # a) grab `<head />` tag
-    head = (document.getElementsByTagName "head")[0]
+  # Switch current locale.
+  Humanizer.locale = (locale)->
+    if @locales[locale]
+      throw Error("Locale '#{locale}' is not available.")
 
-    # b) crete new `<script/>` tag
-    script = document.createElement "script"
-    script.src = "#{path}/humanizer.#{locale}.js"
-
-    # c) insert it into DOM
-    head.appendChild script
+    @currentLocale = locale
+    return @
 
 # Locale registry, available locales can be found in `locales/`
 # directory.
