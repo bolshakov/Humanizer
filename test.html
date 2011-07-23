@@ -1,0 +1,18 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Test</title>
+    <script src="lib/humanizer.js"></script>
+    <script>
+      window.onload = function() {
+        Humanizer.locale("en", "lib/locales");
+        var from = new Date();
+        console.log(Humanizer.between(from, from - 65000)); //.locales); //
+      }
+
+    </script>
+  </head>
+  <body>
+  </body>
+</html>
+
