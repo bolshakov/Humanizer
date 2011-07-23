@@ -7,6 +7,12 @@ previousHumanizer = root.Humanizer
 
 if exports?
   Humanizer = exports
+
+  Humanizer.locale = (locale, options = "./locales")->
+    path = options.path or options
+    for key, value of require "#{path}/humanizer.#{locale}"
+      Humanizer[key] = value
+
 else
   Humanizer = root.Humanizer = {}
 

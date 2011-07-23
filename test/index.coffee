@@ -1,10 +1,8 @@
 assert    = require "assert"
 humanizer = require "humanizer"
 
-# Load `en` locale -- hack, until we come up with a proper way of
-# loading locales.
-for key, value of require "../lib/locales/humanizer.en"
-  humanizer[key] = value
+# Load `en` locale
+humanizer.locale "en"
 
 # Helper time functions
 s = (sec) -> sec * 1000
