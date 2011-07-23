@@ -65,12 +65,9 @@ Humanizer._ = (subject, count)->
   See also: Padrino Documentation on distance_of_time --
   http://www.padrinorb.com/api/classes/Padrino/Helpers/FormatHelpers.html#M000186
 ###
-Humanizer.distanceOfTime = (fromTime, toTime, includeSeconds)->
-  toTime = toTime.getTime() if toTime instanceof Date
-  fromTime = fromTime.getTime() if fromTime instanceof Date
-
-  distanceInMinutes = Math.floor(Math.abs(toTime - fromTime) / 60000)
-  distanceInSeconds = Math.floor(Math.abs(toTime - fromTime) / 1000)
+Humanizer.distanceOfTime = (from, to, includeSeconds)->
+  distanceInMinutes = Math.floor(Math.abs(to - from) / 60000)
+  distanceInSeconds = Math.floor(Math.abs(to - from) / 1000)
 
   if 0 <= distanceInMinutes <= 1
     if distanceInMinutes is 0 and includeSeconds isnt on
@@ -119,11 +116,11 @@ Humanizer.distanceOfTime = (fromTime, toTime, includeSeconds)->
       @._("almostXYears", distanceInYears + 1)
 
 ###
-  Like distanceOfTime, but where toTime is fixed to `new Date()`.
+  Like distanceOfTime, but where `to` is fixed to `new Date()`.
 ###
-Humanizer.timeAgo = (fromTime, includeSeconds)->
+Humanizer.timeAgo = (from, includeSeconds)->
   includeSeconds ?= false
-  @distanceOfTime(fromTime, new Date(), includeSeconds)
+  @distanceOfTime from, Date.now(), includeSeconds
 
 # Some nice aliases.
 Humanizer.between = Humanizer.distanceOfTime
