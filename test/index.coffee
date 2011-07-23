@@ -84,6 +84,9 @@ test "display a year ago", ->
 test "display a few years ago", ->
   assert.eql humanizer.since(Date.now() - d(2800) - m(5)), "over 7 years"
 
+test "display alomost few years", ->
+  assert.eql humanizer.since(Date.now() - d(365)*2 - d(5)), "alomost 2 years"
+
 test "between and distanceOfTime are the same functions", ->
   assert.eql humanizer.distanceOfTime, humanizer.between
 
