@@ -19,13 +19,7 @@ test "loads locale file", ->
   assert.isDefined humanizer.locale("en").locales.en
 
 test "raise exception if locale not found", ->
-  raised = false
-  try
-    humanizer.locale "newspeak"
-  catch error
-    raised = true
-  finally
-    assert.eql raised, true, "exception not raised"
+  assert.throws -> humanizer.locale("newspeak")
 
 test "less than 5 seconds", ->
   assert.eql humanizer.since(Date.now(), true), "less than 5 seconds"

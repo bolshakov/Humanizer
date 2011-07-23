@@ -10,9 +10,7 @@ if exports?
 
   # Switch current locale. Lazy load it, if not avaliable.
   Humanizer.locale = (locale)->
-    if @locales[locale]
-      @currentLocale = locale
-    else
+    unless @locales[locale]
       file = "#{ __dirname}/locales/humanizer.#{locale}.js"
       # If locale file exists.
       if require("fs").statSync(file).isFile()
@@ -22,18 +20,18 @@ if exports?
         throw Error("Locale '#{locale}' is not available.")
 
     @currentLocale = locale
-    return @
+    @
 
 else
   Humanizer = root.Humanizer = {}
 
   # Switch current locale.
   Humanizer.locale = (locale)->
-    if @locales[locale]
+    unless @locales[locale]
       throw Error("Locale '#{locale}' is not available.")
 
     @currentLocale = locale
-    return @
+    @
 
 # Locale registry, available locales can be found in `locales/`
 # directory.
