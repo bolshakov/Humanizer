@@ -1,9 +1,9 @@
 assert    = require "assert"
-humanizer = require "./lib/humanizer"
+humanizer = require "../lib/humanizer"
 
 # Load `en` locale -- hack, until we come up with a proper way of
 # loading locales.
-for key, value of require "./lib/locales/humanizer.en"
+for key, value of require "../lib/locales/humanizer.en"
   humanizer[key] = value
 
 # Helper time functions
@@ -86,3 +86,4 @@ test "display a few years ago", ->
 
 test "between and distanceOfTime are the same functions", ->
   assert.eql humanizer.distanceOfTime, humanizer.between
+
