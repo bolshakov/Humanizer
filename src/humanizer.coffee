@@ -47,7 +47,7 @@ Humanizer._ = (subject, count)->
   if count is 1
     locale[subject].one
   else
-    locale[subject].other.replace new RegExp("%\{count\}"), count
+    locale[subject].other.replace "%{count}", count
 
 
 # Public API
