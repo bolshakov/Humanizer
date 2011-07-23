@@ -56,8 +56,10 @@ Humanizer._ = (subject, count)->
 ###
   Reports the approximate distance in time between two Date objects
   or integers as microseconds. Set includeSeconds to true if you want
-  more detailed approximations when distance < 1 min, 29 secs. See
-  `test/` directory for examples.
+  more detailed approximations when distance < 1 min, 29 secs.
+
+  See also: Padrino Documentation on distance_of_time --
+  http://www.padrinorb.com/api/classes/Padrino/Helpers/FormatHelpers.html#M000186
 ###
 Humanizer.distanceOfTime = (fromTime, toTime, includeSeconds)->
   toTime = toTime.getTime() if toTime instanceof Date
