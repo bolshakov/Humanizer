@@ -10,6 +10,14 @@ if exports?
 else
   Humanizer = root.Humanizer = {}
 
+  # Set current locale and load it from the file
+  #   options could be string or object {path: "locale"}.
+  Humanizer.locale = (locale, options)->
+    path = options.path or options
+    head = (document.getElementsByTagName "head")[0]
+    script = document.createElement "script"
+    script.src = "#{path}/humanizer.#{locale}.js"
+    head.appendChild script
 
 # Locale registry, available locales can be found in `locales/`
 # directory.

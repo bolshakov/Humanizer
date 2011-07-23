@@ -98,9 +98,19 @@ coffee> Humanizer.since(new Date())
 ## Usage
 Add humanize.js into your html file and then include locales needed:
 
-    <script src="javascripts/humanizer.js"></script>
-    <script src="javascripts/locale/humanizer.locale.cz.js"></script>
-    <script src="javascripts/locale/humanizer.locale.en.js"></script>
+    <head>
+      <script src="lib/humanizer.js"></script>
+      <script>
+        window.onload = function() {
+          Humanizer.locale("en", {path: "lib/locales"}).addEventListener("load", function() {
+            var now = Date.now();
+            Humanizer.between(now, now - 65*1000);
+          }, false);
+        }
+      </script>
+    </head>
+
+Note: before using the library you need to ensure that a locale has been loaded.
 
 ## Building library
 Locales can be generated using Cakefile:

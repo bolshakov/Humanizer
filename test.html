@@ -1,0 +1,17 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Test</title>
+    <script src="lib/humanizer.js"></script>
+    <script>
+      window.onload = function() {
+        Humanizer.locale("en", "lib/locales").addEventListener("load", function(){
+          document.write("Locale loaded");
+        }, false);
+      }
+    </script>
+  </head>
+  <body>
+  </body>
+</html>
+
