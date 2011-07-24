@@ -54,7 +54,8 @@ Humanizer.noConflict = ->
 ###
 Humanizer._ = (subject, count)->
   if @locales is {}
-    throw Error "Locales not loaded."
+    throw Error """Locales not loaded. To use Humanizer you need
+      to load at least one locale. See README for details."""
 
   locale = @locales[currentLocale]
 
