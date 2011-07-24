@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <title>Humanizer</title>
+    <link rel="stylesheet" href="stylesheets/application.css" />
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Love+Ya+Like+A+Sister&v2|Droid+Sans|Droid+Sans+Mono&v2">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+    <script>
+
+    </script>
+  </head>
+  <body>
+    <header>
+      <h1>Humanizer</h1>
+      <h2>It’s Humanizer, baby!</h2>
+    </header>
+    <section>
+      <h1>What is this?</h1>
+
+      <p><a href="http://github.com">Humanizer</a> is a library, which
+        knows how to measure approximate distance between the to given dates.
+        For example, the difference between now and now - 25 seconds ago
+        is less than a minute — obvious, right?</p>
+
+      <h1>Let me download!</h1>
+      <ul id="downloads">
+        <li><a class="button" href="http://example.com">Full</a></li>
+        <li><a class="button" href="http://example.com">Minified</a></li>
+        <li><a id="configure" class="button" href="http://example.com">Specify locales</a></li>
+      </ul>
+
+      <h1>Usage</h1>
+      <p>You can use Humanizer both at client side and server side.</p>
+
+      <h2>In the browser</h2>
+      <p>Simply include <code>humanizer.js</code> to your <code>&lt;head /&gt;</code>
+        and don’t forget to include the locales you need:</p>
+      <script src="https://gist.github.com/1102508.js?file=usage.html"></script>
+
+      <h2>On the server</h2>
+      <p>Include <code>humanizer</code> module, select locale and use it like
+        in browser: </p>
+      <script src="https://gist.github.com/1102508.js?file=server.coffee"></script>
+    </section>
+  </body>
+</html>
+

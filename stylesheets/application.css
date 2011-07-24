@@ -1,0 +1,134 @@
+
+body {
+  font-family: "Droid Sans", sans-serif;
+  font-size: 16px;
+
+  background-color: hsl(0, 0%, 25%);
+  color: hsl(228, 3%, 35%);
+}
+
+section, header {
+  margin: 40px auto;
+  max-width: 710px;
+  padding: 0.5em 1.2em;
+
+  background-color: hsl(0, 0%, 100%);
+  -webkit-border-radius: 7px;
+  -moz-border-radius: 7px;
+  border-radius: 7px;
+  -webkit-box-shadow: 0px 0px 15px hsl(0, 0%, 15%);
+  -moz-box-shadow: 0px 0px 15px hsl(0, 0%, 15%);
+  box-shadow: 0px 0px 15px hsl(0, 0%, 15%);
+}
+header {
+  margin-top: 10px;
+}
+h1, h2 {
+  font-size: 1.3em;
+  margin: 1em 0 0.5em 0;
+  color: hsl(89, 75%, 38%);
+}
+
+section > h1:first-child {
+  margin-top: 0.5em;
+}
+
+section > h1:before {
+  content: "★ ";
+}
+section > h2:before {
+  content: "☆ ";
+}
+
+section > p {
+  margin: 0.5em 0;
+  line-height: 1.5;
+}
+
+header > h1 {
+  font-family: 'Love Ya Like A Sister', cursive;
+  font-size: 4.5em;
+  text-align: center;
+  margin: 0;
+}
+header > h2 {
+  color: hsl(228, 3%, 35%);
+
+  font-size: 1.5em;
+  text-align: right;
+  text-align: center;
+
+  margin: 0 0 0 0.2em;
+}
+code {
+  font-family: "Droid Sans Mono", sans-serif;
+}
+a {
+  text-decoration: underline;
+  color: hsl(89, 55%, 38%);
+}
+a:hover {
+  text-decoration: none;
+}
+a[href^="#"] {
+  text-decoration: none;
+  border-bottom: 1px dotted hsl(89, 55%, 38%);
+}
+
+.gist-meta {
+  display: none;
+}
+
+#downloads  {
+  list-style-type: none;
+}
+#downloads > li {
+  display: inline;
+}
+
+#downloads a {
+	color: #e8f0de;
+	border: solid 1px #538312;
+	background: #64991e;
+	background: -webkit-gradient(linear, left top, left bottom, from(hsl(86, 59%, 45%)), to(hsl(85, 80%, 27%)));
+	background: -moz-linear-gradient(top,  hsl(86, 59%, 45%),  hsl(85, 80%, 27%));
+}
+#downloads a:hover {
+	background: #538018;
+	background: -webkit-gradient(linear, left top, left bottom, from(#6b9d28), to(#436b0c));
+	background: -moz-linear-gradient(top,  #6b9d28,  #436b0c);
+}
+#downloads a:active {
+	color: #a9c08c;
+	background: -webkit-gradient(linear, left top, left bottom, from(hsl(85, 80%, 27%)), to(hsl(86, 59%, 45%)));
+	background: -moz-linear-gradient(top,  hsl(85, 80%, 27%),  hsl(86, 59%, 45%));
+}
+
+.button {
+	text-align: center;
+	text-decoration: none;
+	font-size: 2em;
+	text-shadow: 0 1px 1px hsl(0, 0%, 25%);
+
+	vertical-align: baseline;
+	display: inline-block;
+  margin: 5px 0.8em;
+  padding: 0.2em 0.5em;
+	outline: none;
+
+	-webkit-border-radius: 0.3em;
+	-moz-border-radius: 0.3em;
+	border-radius: 0.3em;
+
+	-webkit-box-shadow: 0 1px 2px hsl(0, 0%, 35%);
+	-moz-box-shadow: 0 1px 2px hsl(0, 0%, 35%);
+	box-shadow: 0 1px 2px hsl(0, 0%, 35%);
+}
+.button:hover {
+	text-decoration: none;
+}
+.button:active {
+	position: relative;
+	top: 1px;
+}
+
