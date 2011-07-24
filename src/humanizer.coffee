@@ -53,10 +53,10 @@ Humanizer.noConflict = ->
     Localization helper.
 ###
 Humanizer._ = (subject, count)->
-  locale = @locales[currentLocale]
-
   if @locales is {}
     throw Error "Locales not loaded."
+
+  locale = @locales[currentLocale]
 
   if not count?
     return locale[subject]
