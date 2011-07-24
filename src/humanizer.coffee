@@ -52,12 +52,12 @@ Humanizer.noConflict = ->
 ###
     Localization helper.
 ###
-Humanizer._ = (subject, count)->
-  if @locales is {}
+_ = (subject, count)->
+  if Humanizer.locales is {}
     throw Error """Locales not loaded. To use Humanizer you need
       to load at least one locale. See README for details."""
 
-  locale = @locales[currentLocale]
+  locale = Humanizer.locales[currentLocale]
 
   if not count?
     return locale[subject]
@@ -85,49 +85,49 @@ Humanizer.distanceOfTime = (from, to, includeSeconds)->
 
   if 0 <= distanceInMinutes <= 1
     if distanceInMinutes is 0 and includeSeconds isnt on
-      @._("lessThanXMinutes", 1)
+      _("lessThanXMinutes", 1)
     else
       if includeSeconds is off
-        @._("xMinutes", distanceInMinutes)
+        _("xMinutes", distanceInMinutes)
       else
         if 0 <= distanceInSeconds <= 4
-          @._("lessThanXSeconds", 5)
+          _("lessThanXSeconds", 5)
         else if 5 <= distanceInSeconds <= 9
-          @._("lessThanXSeconds", 10)
+          _("lessThanXSeconds", 10)
         else if 10 <= distanceInSeconds <= 19
-          @._("lessThanXSeconds", 20)
+          _("lessThanXSeconds", 20)
         else if 20 <= distanceInSeconds <= 39
-          @._("halfAMinute")
+          _("halfAMinute")
         else if 40 <= distanceInSeconds <= 59
-          @._("lessThanXMinutes", 1)
+          _("lessThanXMinutes", 1)
         else
-          @._("xMinutes", 1)
+          _("xMinutes", 1)
 
   else if 2 <= distanceInMinutes <= 44
-    @._("xMinutes", distanceInMinutes)
+    _("xMinutes", distanceInMinutes)
   else if 45 <= distanceInMinutes <= 89
-    @._("aboutXHours", 1)
+    _("aboutXHours", 1)
   else if 90 <= distanceInMinutes <= 1439
-    @._("aboutXHours", Math.floor(distanceInMinutes/60))
+    _("aboutXHours", Math.floor(distanceInMinutes/60))
   else if 1140 <= distanceInMinutes <= 2529
-    @._("xDays", 1)
+    _("xDays", 1)
   else if 2530 <= distanceInMinutes <= 43199
-    @._("xDays", Math.floor(distanceInMinutes/1440))
+    _("xDays", Math.floor(distanceInMinutes/1440))
   else if 43200 <= distanceInMinutes <= 86399
-    @._("aboutXMonths", 1)
+    _("aboutXMonths", 1)
   else if 86400 <= distanceInMinutes <= 525599
-    @._("xMonths", Math.floor(distanceInMinutes/43200))
+    _("xMonths", Math.floor(distanceInMinutes/43200))
   else
     distanceInYears = Math.floor(distanceInMinutes / 525600)
     minuteOffsetForLeapYear = Math.floor(distanceInYears / 4) * 1440
     remainder = (distanceInMinutes - minuteOffsetForLeapYear) % 525600
 
     if remainder < 131400
-      @._("aboutXYears", distanceInYears)
+      _("aboutXYears", distanceInYears)
     else if remainder < 394200
-      @._("overXYears", distanceInYears)
+      _("overXYears", distanceInYears)
     else
-      @._("almostXYears", distanceInYears + 1)
+      _("almostXYears", distanceInYears + 1)
 
 ###
   Like distanceOfTime, but where `to` is fixed to `new Date()`.
