@@ -143,13 +143,6 @@ a[href^="#"] {
   -moz-border-radius: 7px;
   border-radius: 7px
 }
-#specify-locales .close {
-  position: absolute;
-  top: -12px;
-  right: -12px;
-  text-decoration: none;
-  outline: none;
-}
 
 #overlay {
   position: absolute;
