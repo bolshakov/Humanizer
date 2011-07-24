@@ -15,9 +15,9 @@ if exports?
   #   Humanizer.locale(name) # => set locale to `name`.
   #   Humanizer.locale() # => return current locale name as a string.
   Humanizer.locale = ()->
-    return currentLocale unless arguments[0]?
-
     locale = arguments[0]
+    return currentLocale unless locale?
+
     unless @locales[locale]
       file = "#{ __dirname}/locales/humanizer.#{locale}.js"
       # If locale file exists.
@@ -35,9 +35,9 @@ else
 
   # Switch current locale. See definition above.
   Humanizer.locale = ()->
-    return currentLocale unless arguments[0]?
-
     locale = arguments[0]
+    return currentLocale unless locale?
+
     unless @locales[locale]
       throw Error("Locale '#{locale}' is not available.")
 
