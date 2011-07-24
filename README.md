@@ -47,7 +47,7 @@ coffee> Humanizer.since(new Date())
 Usage
 -----
 
-Add `humanize.js` to your `<head />` and don't forget to include the
+Add `humanizer.js` to your `<head />` and don't forget to include the
 locales you need:
 
     <head>
