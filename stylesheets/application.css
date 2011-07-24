@@ -40,7 +40,7 @@ section > h2:before {
   content: "☆ ";
 }
 
-section > p {
+p {
   margin: 0.5em 0;
   line-height: 1.5;
 }
@@ -130,5 +130,34 @@ a[href^="#"] {
 .button:active {
 	position: relative;
 	top: 1px;
+}
+
+#specify-locales {
+  display: none;
+  background: hsl(0, 0%, 100%);
+  padding: 20px;
+  position: absolute;
+  z-index: 7;
+  border: 5px solid hsl(0, 0%, 0%);
+  -webkit-border-radius: 7px;
+  -moz-border-radius: 7px;
+  border-radius: 7px
+}
+#specify-locales .close {
+  position: absolute;
+  top: -12px;
+  right: -12px;
+  text-decoration: none;
+  outline: none;
+}
+
+#overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  background: hsl(0, 0%, 7%);
+  opacity: 0.8;
+  display: none;
 }
 

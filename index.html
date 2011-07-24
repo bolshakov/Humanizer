@@ -6,8 +6,11 @@
     <link rel="stylesheet" href="stylesheets/application.css" />
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Love+Ya+Like+A+Sister&v2|Droid+Sans|Droid+Sans+Mono&v2">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+    <script src="javascripts/jquery.modalpop.js"></script>
     <script>
-
+      $(function() {
+        $("#configure").modalpop();
+      });
     </script>
   </head>
   <body>
@@ -27,8 +30,14 @@
       <ul id="downloads">
         <li><a class="button" href="http://example.com">Full</a></li>
         <li><a class="button" href="http://example.com">Minified</a></li>
-        <li><a id="configure" class="button" href="http://example.com">Specify locales</a></li>
+        <li><a id="configure" class="button" href="#specify-locales">Specify locales</a></li>
       </ul>
+      <div id="specify-locales" class="window">
+        <a href="#" class="close" title="close">
+          <img src="images/close.png" alt="close icon" />
+        </a>
+        Hi, how are you?
+      </div>
 
       <h1>Usage</h1>
       <p>You can use Humanizer both at client side and server side.</p>
