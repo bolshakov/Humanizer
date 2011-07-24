@@ -8,10 +8,8 @@
 sys       = require "sys"
 Humanizer = require "../lib/humanizer"
 
-# Load `en` locale -- hack, until we come up with a proper way of
-# loading locales.
-for key, value of require "../lib/locales/humanizer.en"
-  Humanizer[key] = value
+# Load `en` locale
+Humanizer.locale "en"
 
 # First some helper functions, could've been a lot nicer if JS allowed
 # method lookups on `Number` instances.
@@ -41,3 +39,4 @@ showOff "over 3 years",         from, from + d(365) * 3 + d(180)
 showOff "about 6 years",        from, to, true
 showOff "about 6 years",        to, from, true
 showOff "less than a minute",   new Date(), new Date()
+
