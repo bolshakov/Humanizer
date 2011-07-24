@@ -1,9 +1,6 @@
 assert    = require "assert"
 humanizer = require "humanizer"
 
-# Load `en` locale
-humanizer.locale "en"
-
 # Helper time functions
 s = (sec) -> sec * 1000
 m = (min) -> min * s(60)
@@ -13,6 +10,11 @@ d = (day) -> day * h(24)
 test = (name, f) ->
   module.exports[name] = f
 
+# Should be the first test.
+test "raise exception if locale not set", ->
+  assert.throws -> humanizer.since Date.now()
+
+# NOTE: test produce side effect -- loads default `en` locale.
 test "loads locale file", ->
   assert.isDefined humanizer.locale("cz").locales.cz
   # Return `en` locale back.

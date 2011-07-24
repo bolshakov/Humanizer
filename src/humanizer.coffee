@@ -1,6 +1,9 @@
 # Establish the root object,
 root = this
 
+# Private property.
+currentLocale = ""
+
 # Save the previous value of `Humanizer` variable, not *really* likely
 # to happen but still.
 previousHumanizer = root.Humanizer
@@ -19,7 +22,7 @@ if exports?
       else
         throw Error("Locale '#{locale}' is not available.")
 
-    @currentLocale = locale
+    currentLocale = locale
     @
 
 else
@@ -30,7 +33,7 @@ else
     unless @locales[locale]
       throw Error("Locale '#{locale}' is not available.")
 
-    @currentLocale = locale
+    currentLocale = locale
     @
 
 # Locale registry, available locales can be found in `locales/`
@@ -50,10 +53,10 @@ Humanizer.noConflict = ->
     Localization helper.
 ###
 Humanizer._ = (subject, count)->
-  locale = @locales[@currentLocale]
+  locale = @locales[currentLocale]
 
-  if not locale?
-    throw Error "Locale '#{@currentLocale}' is not available."
+  if @locales is {}
+    throw Error "Locales not loaded."
 
   if not count?
     return locale[subject]
