@@ -23,6 +23,9 @@ test "loads locale file", ->
 test "raise exception if locale not found", ->
   assert.throws -> humanizer.locale("newspeak")
 
+test "return locale name", ->
+  assert.eql humanizer.locale(), "en"
+
 test "less than 5 seconds", ->
   assert.eql humanizer.since(Date.now(), true), "less than 5 seconds"
 

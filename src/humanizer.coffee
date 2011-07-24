@@ -12,7 +12,12 @@ if exports?
   Humanizer = exports
 
   # Switch current locale. Lazy load it, if not avaliable.
-  Humanizer.locale = (locale)->
+  #   Humanizer.locale(name) # => set locale to `name`.
+  #   Humanizer.locale() # => return current locale name as a string.
+  Humanizer.locale = ()->
+    return currentLocale unless arguments[0]?
+
+    locale = arguments[0]
     unless @locales[locale]
       file = "#{ __dirname}/locales/humanizer.#{locale}.js"
       # If locale file exists.
@@ -28,8 +33,11 @@ if exports?
 else
   Humanizer = root.Humanizer = {}
 
-  # Switch current locale.
-  Humanizer.locale = (locale)->
+  # Switch current locale. See definition above.
+  Humanizer.locale = ()->
+    return currentLocale unless arguments[0]?
+
+    locale = arguments[0]
     unless @locales[locale]
       throw Error("Locale '#{locale}' is not available.")
 
