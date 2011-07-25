@@ -154,12 +154,9 @@ select {
 }
 
 .buttons {
-  margin: 0 auto;
-  width: 190px;
+  float: right;
 }
-.buttons > input {
-  width: 85px;
-}
+
 #overlay {
   position: absolute;
   top: 0;
