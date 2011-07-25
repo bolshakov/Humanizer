@@ -155,10 +155,10 @@ select {
 
 .buttons {
   margin: 0 auto;
-  width: 160px;
+  width: 190px;
 }
 .buttons > input {
-  width: 70px;
+  width: 85px;
 }
 #overlay {
   position: absolute;
