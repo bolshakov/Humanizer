@@ -71,20 +71,20 @@ task "fetch", "fetch humanizer files from repo", ->
   # Site root.
   www = __dirname
   # Temporary directory.
-  dir = "/tmp/#{Math.floor Math.random()*100000}"
+  dir = "/tmp/humanizer-#{Math.floor Math.random()*100000}"
   # Clone Humanizer repo
   exec "git clone #{repo} #{dir}", ->
     process.chdir dir
     # FIX: Looks ugly. Seems like its my own problem.
     exec "npm install coffee-script", ->
       exec "cake build", ->
-        locales = {}
+        locales = []
         # Read locales list.
         for filename in fs.readdirSync "#{dir}/lib/locales"
           code     = filename[10...-3]
           language = codes[code]
           if language?
-            locales[code] = language
+            locales.push [code, language]
           else
             sys.puts "    ^ Can’t find language name for language code #{code}."
 

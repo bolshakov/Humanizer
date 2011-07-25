@@ -117,7 +117,7 @@ a[href^="#"] {
 
 	vertical-align: baseline;
 	display: inline-block;
-  margin: 5px 0.8em;
+  margin: 5px 1.3em;
   padding: 0.2em 0.5em;
 	outline: none;
 
@@ -149,6 +149,17 @@ a[href^="#"] {
   border-radius: 7px
 }
 
+select {
+  width: 600px;
+}
+
+.buttons {
+  margin: 0 auto;
+  width: 160px;
+}
+.buttons > input {
+  width: 70px;
+}
 #overlay {
   position: absolute;
   top: 0;
