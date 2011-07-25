@@ -1,3 +1,7 @@
+aside, details, footer, header,
+hgroup, menu, nav, section {
+    display:block;
+}
 
 body {
   font-family: "Droid Sans", sans-serif;
