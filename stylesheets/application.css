@@ -1,6 +1,6 @@
 aside, details, footer, header,
 hgroup, menu, nav, section {
-    display:block;
+    display: block;
 }
 
 body {
@@ -63,6 +63,7 @@ header > h1, header > h2 {
 header > h1 {
   font-family: 'Love Ya Like A Sister', cursive;
   font-size: 4.5em;
+  margin-bottom: 0.2em;
 }
 header > h2 {
   color: #57585C;
