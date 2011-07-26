@@ -80,17 +80,17 @@ header {
   padding-top: 0.8em;
   padding-bottom: 1.2em;
 }
-header > h1, header > h2 {
+header h1, header h2 {
   line-height: 1;
   text-align: center;
   margin: 0;
 }
-header > h1 {
+header h1 {
   font-family: 'Love Ya Like A Sister', cursive;
   font-size: 4.5em;
   margin-bottom: 0.2em;
 }
-header > h2 {
+header h2 {
   color: #57585C;
   font-size: 1.5em;
 }
