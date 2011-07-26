@@ -105,13 +105,29 @@ a[href^="#"] {
   display: block;
   clear: both;
 }
-
+/*
+  First we apply styles like JS is disabled,
+  so JS-specific features turned off
+*/
 #downloads > li {
+  width: 16em;
+  display: none;
+}
+
+#downloads > li:first-child {
+  display: block;
+  margin: 5px auto;
+}
+
+/*
+  With enabled JS, we show Chose locales button
+*/
+#with-js #downloads > li {
   display: block;
   margin: 5px 1.3em;
   float: right; /* :last-child */
 }
-#downloads > li:first-child {
+#with-js #downloads > li:first-child {
   float: left;
 }
 
