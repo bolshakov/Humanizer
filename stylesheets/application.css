@@ -30,7 +30,7 @@ header {
 h1, h2 {
   font-size: 1.3em;
   margin: 1em 0 0.5em 0;
-  color: hsl(89, 75%, 38%);
+  color: #63AA18;
 }
 
 section > h1:first-child {
