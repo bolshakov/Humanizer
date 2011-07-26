@@ -7,8 +7,8 @@ body {
   font-family: "Droid Sans", sans-serif;
   font-size: 16px;
 
-  background-color: hsl(0, 0%, 25%);
-  color: hsl(228, 3%, 35%);
+  background-color: #404040;
+  color: #57585C;
 }
 
 section, header {
@@ -16,13 +16,13 @@ section, header {
   max-width: 710px;
   padding: 0.5em 1.2em;
 
-  background-color: hsl(0, 0%, 100%);
+  background-color: #FFF;
   -webkit-border-radius: 7px;
   -moz-border-radius: 7px;
   border-radius: 7px;
-  -webkit-box-shadow: 0px 0px 15px hsl(0, 0%, 15%);
-  -moz-box-shadow: 0px 0px 15px hsl(0, 0%, 15%);
-  box-shadow: 0px 0px 15px hsl(0, 0%, 15%);
+  -webkit-box-shadow: 0px 0px 15px #262626;
+  -moz-box-shadow: 0px 0px 15px #262626;
+  box-shadow: 0px 0px 15px #262626;
 }
 header {
   margin-top: 10px;
@@ -57,7 +57,7 @@ header > h1 {
   margin: 0;
 }
 header > h2 {
-  color: hsl(228, 3%, 35%);
+  color: #57585C;
 
   font-size: 1.5em;
   text-align: right;
@@ -70,14 +70,14 @@ code {
 }
 a {
   text-decoration: underline;
-  color: hsl(89, 55%, 38%);
+  color: #63962C;
 }
 a:hover {
   text-decoration: none;
 }
 a[href^="#"] {
   text-decoration: none;
-  border-bottom: 1px dotted hsl(89, 55%, 38%);
+  border-bottom: 1px dotted #63962C;
 }
 
 .gist-meta {
@@ -95,8 +95,8 @@ a[href^="#"] {
 	color: #e8f0de;
 	border: solid 1px #538312;
 	background: #64991e;
-	background: -webkit-gradient(linear, left top, left bottom, from(hsl(86, 59%, 45%)), to(hsl(85, 80%, 27%)));
-	background: -moz-linear-gradient(top,  hsl(86, 59%, 45%),  hsl(85, 80%, 27%));
+	background: -webkit-gradient(linear, left top, left bottom, from(#7CB62F), to(#4E7C0E));
+	background: -moz-linear-gradient(top,  #7CB62F,  #4E7C0E);
 }
 #downloads a:hover {
 	background: #538018;
@@ -105,15 +105,15 @@ a[href^="#"] {
 }
 #downloads a:active {
 	color: #a9c08c;
-	background: -webkit-gradient(linear, left top, left bottom, from(hsl(85, 80%, 27%)), to(hsl(86, 59%, 45%)));
-	background: -moz-linear-gradient(top,  hsl(85, 80%, 27%),  hsl(86, 59%, 45%));
+	background: -webkit-gradient(linear, left top, left bottom, from(#4E7C0E), to(#7CB62F));
+	background: -moz-linear-gradient(top,  #4E7C0E,  #7CB62F);
 }
 
 .button {
 	text-align: center;
 	text-decoration: none;
 	font-size: 2em;
-	text-shadow: 0 1px 1px hsl(0, 0%, 25%);
+	text-shadow: 0 1px 1px #404040;
 
 	vertical-align: baseline;
 	display: inline-block;
@@ -125,9 +125,9 @@ a[href^="#"] {
 	-moz-border-radius: 0.3em;
 	border-radius: 0.3em;
 
-	-webkit-box-shadow: 0 1px 2px hsl(0, 0%, 35%);
-	-moz-box-shadow: 0 1px 2px hsl(0, 0%, 35%);
-	box-shadow: 0 1px 2px hsl(0, 0%, 35%);
+	-webkit-box-shadow: 0 1px 2px #595959;
+	-moz-box-shadow: 0 1px 2px #595959;
+	box-shadow: 0 1px 2px #595959;
 }
 .button:hover {
 	text-decoration: none;
@@ -139,11 +139,11 @@ a[href^="#"] {
 
 #specify-locales {
   display: none;
-  background: hsl(0, 0%, 100%);
+  background: #FFF;
   padding: 20px;
   position: absolute;
   z-index: 7;
-  border: 5px solid hsl(0, 0%, 0%);
+  border: 5px solid #000;
   -webkit-border-radius: 7px;
   -moz-border-radius: 7px;
   border-radius: 7px
@@ -162,7 +162,7 @@ select {
   top: 0;
   left: 0;
   z-index: 2;
-  background: hsl(0, 0%, 7%);
+  background: #121212;
   opacity: 0.8;
   display: none;
 }
