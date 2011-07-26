@@ -119,24 +119,28 @@ header h2 {
   so JS-specific features turned off
 */
 #downloads > li {
-  width: 16em;
+  width: 13em;
   display: none;
 }
 
 #downloads > li:first-child {
   display: block;
-  margin: 5px auto;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 /*
   With enabled JS, we show Chose locales button
 */
 #with-js #downloads > li {
+  width: none;
   display: block;
-  margin: 5px 1.3em;
+  margin-right: 2.5em;
   float: right; /* :last-child */
 }
 #with-js #downloads > li:first-child {
+  margin-right: 0em;
+  margin-left: 2.5em;
   float: left;
 }
 
@@ -161,7 +165,7 @@ header h2 {
 .button {
 	text-align: center;
 	text-decoration: none;
-	font-size: 2em;
+	font-size: 1.6em;
 	text-shadow: 0 1px 1px #404040;
 
 	vertical-align: baseline;
