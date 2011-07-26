@@ -52,7 +52,7 @@ p {
 }
 /* Page header begin */
 header {
-  padding-top: 1.2em;
+  padding-top: 0.8em;
   padding-bottom: 1.2em;
 }
 header > h1, header > h2 {
@@ -130,7 +130,6 @@ a[href^="#"] {
 #with-js #downloads > li:first-child {
   float: left;
 }
-
 #downloads a {
 	color: #e8f0de;
 	border: solid 1px #538312;
