@@ -11,6 +11,33 @@ body {
   color: #57585C;
 }
 
+
+p {
+  margin: 0.5em 0;
+  line-height: 1.4;
+  -moz-hyphens: auto;
+}
+
+code {
+  font-family: "Droid Sans Mono", sans-serif;
+}
+a {
+  text-decoration: underline;
+  color: #63962C;
+}
+a:hover {
+  text-decoration: none;
+}
+a[href^="#"] {
+  text-decoration: none;
+  border-bottom: 1px dotted #63962C;
+}
+
+.gist-meta {
+  display: none;
+}
+
+
 section, header {
   margin: 40px auto;
   max-width: 710px;
@@ -24,9 +51,7 @@ section, header {
   -moz-box-shadow: 0px 0px 15px #262626;
   box-shadow: 0px 0px 15px #262626;
 }
-header {
-  margin-top: 10px;
-}
+
 h1, h2 {
   font-size: 1.3em;
   margin: 1em 0 0.5em 0;
@@ -45,12 +70,12 @@ section > h2:before {
   content: "☆ ";
 }
 
-p {
-  margin: 0.5em 0;
-  line-height: 1.4;
-  -moz-hyphens: auto;
-}
+
 /* Page header begin */
+header {
+  margin-top: 10px;
+}
+
 header {
   padding-top: 0.8em;
   padding-bottom: 1.2em;
@@ -71,25 +96,6 @@ header > h2 {
 }
 
 /* Page header end */
-
-code {
-  font-family: "Droid Sans Mono", sans-serif;
-}
-a {
-  text-decoration: underline;
-  color: #63962C;
-}
-a:hover {
-  text-decoration: none;
-}
-a[href^="#"] {
-  text-decoration: none;
-  border-bottom: 1px dotted #63962C;
-}
-
-.gist-meta {
-  display: none;
-}
 
 /* Big green buttons */
 #downloads  {
@@ -130,6 +136,8 @@ a[href^="#"] {
 #with-js #downloads > li:first-child {
   float: left;
 }
+
+
 #downloads a {
 	color: #e8f0de;
 	border: solid 1px #538312;
@@ -177,6 +185,7 @@ a[href^="#"] {
 
 /* End if big green buttons */
 
+/* Chosing locales begin */
 #specify-locales {
   display: none;
   background: #FFF;
@@ -205,5 +214,7 @@ select {
   background: #121212;
   opacity: 0.8;
   display: none;
+
 }
+/* Chosing locales end */
 
