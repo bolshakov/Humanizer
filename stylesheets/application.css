@@ -218,3 +218,35 @@ select {
 }
 /* Chosing locales end */
 
+/* Ribbon begin */
+.ribbon {
+  overflow: hidden;
+  position: absolute;
+  right: -3.5em;
+  top: 3em;
+
+	background: -webkit-gradient(linear, left top, left bottom, from(#4E7C0E), to(#7CB62F));
+	background: -moz-linear-gradient(top,  #4E7C0E,  #7CB62F);
+
+  -webkit-box-shadow: 0px 0px 1em #262626;
+  -moz-box-shadow: 0px 0px 1em #262626;
+  box-shadow: 0px 0px 1em #262626;
+
+  -moz-transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+}
+
+.ribbon a {
+  color: #e8f0de;
+  display: block;
+  margin: 0.05em 0 0.075em 0;
+  padding: 0.5em 3.5em;
+  text-align: center;
+  text-decoration: none;
+
+	-webkit-box-shadow: 0 0 0.5em #121212;
+	-moz-box-shadow: 0 0 0.5em #121212;
+  text-shadow: 0 0 0.5em #121212;
+}
+/* Ribbon end */
+
