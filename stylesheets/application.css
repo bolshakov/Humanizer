@@ -84,11 +84,28 @@ a[href^="#"] {
   display: none;
 }
 
+/* Big green buttons */
 #downloads  {
   list-style-type: none;
+  margin: 0 3em;
+  padding: 0;
 }
+
+#downloads:after {
+  content: ".";
+  height: 0;
+  visibility: hidden;
+  display: block;
+  clear: both;
+}
+
 #downloads > li {
-  display: inline;
+  display: block;
+  margin: 5px 1.3em;
+  float: right; /* :last-child */
+}
+#downloads > li:first-child {
+  float: left;
 }
 
 #downloads a {
@@ -117,7 +134,6 @@ a[href^="#"] {
 
 	vertical-align: baseline;
 	display: inline-block;
-  margin: 5px 1.3em;
   padding: 0.2em 0.5em;
 	outline: none;
 
@@ -136,6 +152,8 @@ a[href^="#"] {
 	position: relative;
 	top: 1px;
 }
+
+/* End if big green buttons */
 
 #specify-locales {
   display: none;
