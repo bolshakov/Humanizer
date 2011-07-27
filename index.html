@@ -26,43 +26,47 @@
         <a href="https://github.com/TweeKane/Humanizer">Fork me on GitHub</a>
       </aside>
     </header>
-    <section>
-      <h1>What is this?</h1>
-      <p><a href="http://github.com">Humanizer</a> is a library, which
-        knows how to measure approximate distance between the to given dates.
-        For example, the difference between now and now &minus; 25 seconds ago
-        is less than a minute — obvious, right?</p>
+    <div id="content">
+      <section>
+        <h1>What is this?</h1>
+        <p><a href="http://github.com">Humanizer</a> is a library, which
+          knows how to measure approximate distance between the to given dates.
+          For example, the difference between now and now &minus; 25 seconds ago
+          is less than a minute — obvious, right?</p>
+      </section>
+      <section>
+        <h1>Let me download!</h1>
+        <ul id="downloads">
+          <li><a class="button" href="http://marijnhaverbeke.nl/uglifyjs?code_url=http://TweeKane.github.com/Humanizer/javascripts/humanizer.js&&amp;code_url=http://TweeKane.github.com/Humanizer/locales/humanizer.en.js&amp;download=humanizer.min.js">Only English</a></li>
+          <li><a class="button" href="#specify-locales">Specify locales</a></li>
+        </ul>
+        <div id="specify-locales" class="window">
+          <form>
+            <select multiple tabindex="0" title="Type language name">
+            </select>
+            <br/>
+            <div class="buttons">
+              <input class="close" type="button" value="Cancel" />
+              <input type="submit" value="Download"/>
+            </div>
+          </form>
+        </div>
+      </section>
+      <section>
+        <h1>Usage</h1>
+        <p>You can use Humanizer both at client side and server side.</p>
 
-      <h1>Let me download!</h1>
-      <ul id="downloads">
-        <li><a class="button" href="http://marijnhaverbeke.nl/uglifyjs?code_url=http://TweeKane.github.com/Humanizer/javascripts/humanizer.js&&amp;code_url=http://TweeKane.github.com/Humanizer/locales/humanizer.en.js&amp;download=humanizer.min.js">Only English</a></li>
-        <li><a class="button" href="#specify-locales">Specify locales</a></li>
-      </ul>
-      <div id="specify-locales" class="window">
-        <form>
-          <select multiple tabindex="0" title="Type language name">
-          </select>
-          <br/>
-          <div class="buttons">
-            <input class="close" type="button" value="Cancel" />
-            <input type="submit" value="Download"/>
-          </div>
-        </form>
-      </div>
+        <h2>In the browser</h2>
+        <p>Simply include <code>humanizer.js</code> to your <code>&lt;head /&gt;</code>
+          and don’t forget to include the locales you need:</p>
+        <script src="https://gist.github.com/1102508.js?file=usage.html"></script>
 
-      <h1>Usage</h1>
-      <p>You can use Humanizer both at client side and server side.</p>
-
-      <h2>In the browser</h2>
-      <p>Simply include <code>humanizer.js</code> to your <code>&lt;head /&gt;</code>
-        and don’t forget to include the locales you need:</p>
-      <script src="https://gist.github.com/1102508.js?file=usage.html"></script>
-
-      <h2>On the server</h2>
-      <p>Include <code>humanizer</code> module, select locale and use it like
-        in browser: </p>
-      <script src="https://gist.github.com/1102508.js?file=server.coffee"></script>
-    </section>
+        <h2>On the server</h2>
+        <p>Include <code>humanizer</code> module, select locale and use it like
+          in browser: </p>
+        <script src="https://gist.github.com/1102508.js?file=server.coffee"></script>
+      </section>
+    </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
     <script src="javascripts/jquery.modalpop.js"></script>
     <script src="javascripts/chosen.jquery.min.js"></script>

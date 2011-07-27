@@ -10,6 +10,7 @@ body {
   background-color: #404040;
   color: #57585C;
   margin: 0;
+  padding: 20px 0;
   overflow-x: hidden;
 }
 
@@ -20,9 +21,6 @@ p {
   -moz-hyphens: auto;
 }
 
-code {
-  font-family: "Droid Sans Mono", sans-serif;
-}
 a {
   text-decoration: underline;
   color: #63962C;
@@ -35,25 +33,25 @@ a[href^="#"] {
   border-bottom: 1px dotted #63962C;
 }
 
+
 .gist-meta {
   display: none;
 }
-.gist {
+
+.gist, code {
   font-family: "Droid Sans Mono", sans-serif;
 }
 
-section, header {
-  margin: 40px auto;
-  max-width: 710px;
+#content, header {
   padding: 0.5em 1.2em;
-
+  margin: 0 auto;
+  max-width: 710px;
   background-color: #FFF;
-  -webkit-border-radius: 7px;
-  -moz-border-radius: 7px;
   border-radius: 7px;
-  -webkit-box-shadow: 0px 0px 15px #262626;
-  -moz-box-shadow: 0px 0px 15px #262626;
   box-shadow: 0px 0px 15px #262626;
+}
+section {
+  background-color: #FFF;
 }
 
 h1, h2 {
@@ -74,13 +72,9 @@ section > h2:before {
   content: "☆ ";
 }
 
-
 /* Page header begin */
 header {
-  margin-top: 10px;
-}
-
-header {
+  margin-bottom: 1.5em;
   padding-top: 0.8em;
   padding-bottom: 1.2em;
 }
