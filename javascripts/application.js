@@ -39,7 +39,7 @@
             _(locales).each(function(code) {
               url = url + "&amp;code_url=" + humanizer + "/locales/humanizer." + code + ".js"
             });
-            url += "&amp;download=humanizer.custom.js";
+            url += "&download=humanizer.custom.js";
             window.open(url);
           });
         });
