@@ -1,0 +1,19 @@
+/* TEAM */
+  Humanizer developer: Artyom Bolshakov
+  Contact: tweekane@gmail.com
+  Twitter: @overjesus
+  Location: Saint Petersburg, Russia
+
+  Humanizer developer: Sergei Lebedev
+  Contact: superbobry@gmail.com
+  Twitter: @superbobry
+  Location: Saint Petersburg, Russia
+
+/* THANKS */
+	Padrino team (@padrinorb)
+
+/* SITE */
+  Last update: 2011/08/05
+  Language: English
+  Doctype: HTML5
+
