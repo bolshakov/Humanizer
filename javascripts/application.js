@@ -2,7 +2,7 @@
         // Chosen locales
         var locales;
         var select    = $("#specify-locales select");
-        var humanizer = "http://TweeKane.github.com/Humanizer";
+        var humanizer = "http://bolshakov.github.com/Humanizer";
         var uglify    = "http://marijnhaverbeke.nl/uglifyjs";
 
         // Enable js styles
