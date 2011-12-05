@@ -10,10 +10,9 @@
   Location: Saint Petersburg, Russia
 
 /* THANKS */
-	Padrino team (@padrinorb)
+  Padrino team (@padrinorb)
 
 /* SITE */
-  Last update: 2011/08/05
+  Last update: 2011/12/05
   Language: English
   Doctype: HTML5
-
