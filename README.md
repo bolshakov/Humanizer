@@ -50,16 +50,17 @@ Usage
 Add `humanizer.js` to your `<head />` and don't forget to include the
 locales you need:
 
-    <head>
-      <script src="lib/humanizer.js"></script>
-      <script src="lib/locales/humanizer.fr.js"></script>
-      <script src="lib/locales/humanizer.en.js"></script>
-      <script>
-        var bicycleDay = Date.parse("November 16, 1938");
-        Humanizer.locale("fr").since(bicycleDay);
-      </script>
-    </head>
-
+```html
+<head>
+  <script src="lib/humanizer.js"></script>
+  <script src="lib/locales/humanizer.fr.js"></script>
+  <script src="lib/locales/humanizer.en.js"></script>
+  <script>
+    var bicycleDay = Date.parse("November 16, 1938");
+    Humanizer.locale("fr").since(bicycleDay);
+  </script>
+</head>
+```
 
 Building the library
 --------------------
