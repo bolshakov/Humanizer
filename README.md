@@ -2,7 +2,7 @@ Humanizer
 =========
 
 `Humanizer` is a library, which knows how to measure approximate distance
-between the to given dates. For example, the difference between *now* and
+between the two given dates. For example, the difference between *now* and
 *now - 25 seconds ago* is `less than a minute` -- obvious, right?
 
 
